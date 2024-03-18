@@ -1,7 +1,7 @@
 #!/bin/bash
-[ "$UID" -eq 0 ] || exec sudo bash "$0" "$@"
-install_dir="/usr/local/bin/"
-current_dir="$(pwd)"
+[ "$UID" -eq 0 ] || exec sudo bash "$0" "$@" # elevate priveleges.
+install_dir="/usr/local/bin/" # set destination directory.
+current_dir="$(pwd)" # set working directory.
 wget 'http://apt.flirc.tv/arch/x86_64/flirc.latest.x86_64.tar.gz'
 # backup link: wget 'https://app.box.com/s/z1s0q2x0gghowm0gp5cif8vuxc42pf8g'
 gzip -d flirc.latest.x86_64.tar.gz

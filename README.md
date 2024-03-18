@@ -1,5 +1,14 @@
-Install script to setup flirc USB driver on Linux systems.
+Install script to setup [flirc](https://flirc.com/ubuntu-software-installation-guide) USB driver on Linux systems.
 
-Required dependencies (Debian/Ubuntu);
-libhidapi-hidraw0
-libqt5xmlpatterns5
+> [!NOTE]
+> Required dependencies;[^1]
+> libhidapi-hidraw0
+> libqt5xmlpatterns5
+
+**TO-DO;**
+- [X] Functional script
+- [ ] Expand verbosity
+- [ ] Check dependencies
+- [ ] Uninstall option
+
+[^1]: Debian/Ubuntu
