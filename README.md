@@ -1,11 +1,12 @@
 Install script to setup [flirc](https://flirc.com/ubuntu-software-installation-guide) USB driver on Linux systems.
 
-> [!NOTE]
-> Required dependencies;[^1]
-> libhidapi-hidraw0
-> libqt5xmlpatterns5
+**Required dependencies;**[^1]
+```
+libhidapi-hidraw0
+libqt5xmlpatterns5
+```
 
-**TO-DO;**
+**To-Do;**
 - [X] Functional script
 - [ ] Expand verbosity
 - [ ] Check dependencies
