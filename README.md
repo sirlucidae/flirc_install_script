@@ -1,0 +1,1 @@
+Install script for flirc USB driver on Linux systems.
