@@ -1,18 +1,15 @@
 #!/bin/bash
+[ "$UID" -eq 0 ] || exec sudo bash "$0" "$@"
 install_dir="/usr/local/bin/"
 current_dir="$(pwd)"
 wget 'http://apt.flirc.tv/arch/x86_64/flirc.latest.x86_64.tar.gz'
 # backup link: wget 'https://app.box.com/s/z1s0q2x0gghowm0gp5cif8vuxc42pf8g'
 gzip -d flirc.latest.x86_64.tar.gz
 tar -xf flirc.latest.x86_64.tar.gz
-dpkg -s libhidapi-hidraw0 > /dev/null 2>&1
-if [ $? = 0 ]; then
-dpkg -s libqt5xmlpatterns5 > /dev/null 2>&1
-elif [ $? = 0 ]; then
     cp $current_dir/Flirc*/Flirc $install_dir/ # copies binary.
     cp $current_dir/Flirc*/flirc_util $install_dir/ # copies binary.
     cp $current_dir/Flirc.png /usr/share/pixmaps/ # copies icon.
-    cat > ~/.local/share/applications/Flirc.desktop << EOF # create desktop entry file.
+    cat > /usr/share/applications/Flirc.desktop << EOF # create desktop entry file.
 [Desktop Entry]
 Encoding=UTF-8
 Version=1.0
@@ -24,7 +21,7 @@ Comment=Flirc Second Generation USB Receiver
 Categories=Utility;
 Icon=/usr/share/pixmaps/Flirc.png
 EOF
-    chmod u+x ~/.local/share/applications/Flirc.desktop # give execution permission to desktop entry file.
+    chmod u+x /usr/share/applications/Flirc.desktop # give execution permission to desktop entry file.
     cat > /etc/udev/rules.d/99-flirc.rules << EOF # create rules file.
 # Flirc Devices
 
@@ -39,6 +36,3 @@ SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="20a0", ATTR{idPro
 SUBSYSTEM=="hidraw", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="0006", MODE="0666"
 EOF
     echo -e "Installed successfully."
-else
-    echo -e "Error: Missing Dependencies."
-fi
